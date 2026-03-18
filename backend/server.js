@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const User = require("./models/User");
+const User = require("./models/users");
 
 app.get("/", (req, res) => {
   res.send("BeAura API is running");
@@ -46,10 +46,18 @@ app.listen(PORT, () => {
 
 app.post("/users", async (req, res) => {
   try {
+    if (!req.body.email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
+
     const newUser = new User(req.body);
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
+
   } catch (err) {
+    if (err.code === 11000) {
+      return res.status(400).json({ message: "User with this email already exists" });
+    }
     res.status(400).json({ message: err.message });
   }
 });
