@@ -91,3 +91,6 @@ Day 30: Final submission
 ## 🎯 Goal
 
 To build a real-world skincare platform with personalized recommendations and healthcare support features.
+
+## ✨ Update
+Initial README added in separate branch for PR.
