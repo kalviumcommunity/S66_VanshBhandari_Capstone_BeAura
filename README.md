@@ -13,7 +13,14 @@ This project is inspired by platforms like Man Matters but designed for both men
 
 ---
 
-## 🚀 Features
+## 🚀 Live Backend Deployment
+
+🔗 Render Link:  
+https://s66-vanshbhandari-capstone-beaura.onrender.com
+
+---
+
+## ⚙️ Features
 
 - Personalized skincare & haircare recommendations
 - Face, skin, and hair type selection
@@ -27,64 +34,79 @@ This project is inspired by platforms like Man Matters but designed for both men
 
 ## 🛠️ Tech Stack
 
-Frontend:
+### Frontend:
 - React.js
 - Tailwind CSS
 
-Backend:
+### Backend:
 - Node.js
 - Express.js
 
-Database:
-- MongoDB
+### Database:
+- MongoDB (Atlas)
 
-Other:
+### Other:
 - Google Maps API
 - JWT Authentication
+
+---
+
+## 🔌 API Endpoints
+
+### GET APIs
+- `GET /users` → Get all users
+- `GET /users/:id` → Get user by ID
+
+### POST APIs
+- `POST /users` → Create new user
+
+### PUT APIs
+- `PUT /users/:id` → Update user
+
+---
+
+## 🧪 Testing
+
+All APIs are tested using Postman.
 
 ---
 
 ## 📅 Capstone Plan (Day-by-Day)
 
 ### Week 1 – Planning & Design
-Day 1: Finalize project idea and features  
-Day 2: Create wireframes  
-Day 3: Design UI in Figma  
-Day 4: Setup GitHub repo & README  
-Day 5: Design database schema  
+- Day 1: Finalize project idea and features  
+- Day 2: Create wireframes  
+- Day 3: Design UI in Figma  
+- Day 4: Setup GitHub repo & README  
+- Day 5: Design database schema  
 
 ### Week 2 – Backend
-Day 6: Setup Express server  
-Day 7: Setup MongoDB connection  
-Day 8: Create models (User, Product)  
-Day 9: Create APIs  
-Day 10: Authentication (Login/Register)  
-Day 11: Image upload  
-Day 12: Test APIs  
+- Day 6: Setup Express server  
+- Day 7: Setup MongoDB connection  
+- Day 8: Create models  
+- Day 9: Implement GET APIs  
+- Day 10: Implement POST API  
+- Day 11: Implement PUT API  
+- Day 12: Test APIs  
 
 ### Week 3 – Frontend
-Day 13: Setup React app  
-Day 14: Create homepage UI  
-Day 15: Men/Women pages  
-Day 16: Product page  
-Day 17: Connect frontend with backend  
-Day 18: Styling  
-Day 19: Fix UI issues  
+- Day 13: Setup React app  
+- Day 14: Create homepage UI  
+- Day 15: Connect frontend with backend  
+- Day 16: Styling  
+- Day 17: Fix UI issues  
 
 ### Week 4 – Features
-Day 20: Doctor booking page  
-Day 21: Map integration  
-Day 22: Chat system UI  
-Day 23: Testing complete flow  
-Day 24: Debugging  
-Day 25: Optimization  
+- Day 18: Chat system UI  
+- Day 19: Google Maps integration  
+- Day 20: Testing and debugging  
 
 ### Week 5 – Deployment
-Day 26: Deploy backend  
-Day 27: Deploy frontend  
-Day 28: Testing  
-Day 29: Feedback & improvements  
-Day 30: Final submission  
+- Day 21: Deploy backend on Render  
+- Day 22: Deploy frontend  
+- Day 23: Final testing  
+- Day 24: Improvements  
+- Day 25: Final submission  
 
 ---
 
@@ -92,5 +114,12 @@ Day 30: Final submission
 
 To build a real-world skincare platform with personalized recommendations and healthcare support features.
 
-## ✨ Update
-Initial README added in separate branch for PR.
+---
+
+## 📌 Status
+
+✅ Backend deployed on Render  
+✅ APIs working  
+🔄 Frontend in progress  
+
+---
