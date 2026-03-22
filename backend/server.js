@@ -43,7 +43,7 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-
+// DB WRITE operation using POST API
 app.post("/users", async (req, res) => {
   try {
     if (!req.body.email) {
