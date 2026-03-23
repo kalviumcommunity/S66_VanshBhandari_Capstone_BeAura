@@ -12,7 +12,12 @@ const userSchema = new mongoose.Schema({
   },
   skinType: {
     type: String
-  }
+  },
+  
+  appointment: [{
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "Appointment"
+}]
 });
 
 module.exports = mongoose.model("User", userSchema);
