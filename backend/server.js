@@ -6,6 +6,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
+const Appointment = require("./models/appointment");
 
 app.use(cors());
 app.use(express.json());
@@ -73,6 +74,23 @@ app.put("/users/:id", async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
     res.json(updatedUser);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+app.get("/appointments", async (req, res) => {
+  try {
+    const appointments = await Appointment.find().populate("user");
+    res.json(appointments);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+app.post("/appointments", async (req, res) => {
+  try {
+    const appointment = new Appointment(req.body);
+    const saved = await appointment.save();
+    res.status(201).json(saved);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
