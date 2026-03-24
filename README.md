@@ -114,12 +114,13 @@ All APIs are tested using Postman.
 
 To build a real-world skincare platform with personalized recommendations and healthcare support features.
 
+
 ---
 
 ## 📌 Status
 
 ✅ Backend deployed on Render  
 ✅ APIs working  
-🔄 Frontend in progress  
+🔄 Frontend in Started
 
 ---
