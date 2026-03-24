@@ -121,6 +121,13 @@ To build a real-world skincare platform with personalized recommendations and he
 
 ✅ Backend deployed on Render  
 ✅ APIs working  
-🔄 Frontend in Started
+✅ Frontend in Deployed on render
 
+## 🚀 Live Demo
+
+### 🌐 Frontend (Netlify)
+https://incomparable-haupia-311b21.netlify.app
+
+### ⚙️ Backend (Render)
+https://s66-vanshbhandari-capstone-beaura.onrender.com
 ---
