@@ -1,12 +1,90 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-project</title>
+    <title>BeAura | Personalized Skincare & Haircare</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-tertiary-fixed": "#1b1d0e",
+                "secondary-fixed-dim": "#ffb68c",
+                "on-surface-variant": "#45483c",
+                "error-container": "#ffdad6",
+                "on-error-container": "#93000a",
+                "primary-fixed-dim": "#b6d088",
+                "on-secondary-container": "#783603",
+                "secondary-container": "#ffa26a",
+                "surface-tint": "#50652a",
+                "tertiary": "#4c4d3b",
+                "tertiary-container": "#646552",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed": "#131f00",
+                "surface-variant": "#e3e2e0",
+                "on-tertiary-container": "#e2e3ca",
+                "inverse-primary": "#b6d088",
+                "on-background": "#1a1c1a",
+                "primary": "#3e5219",
+                "on-tertiary-fixed-variant": "#474836",
+                "on-primary-fixed-variant": "#394d14",
+                "surface-container-high": "#e9e8e5",
+                "secondary": "#934b19",
+                "outline": "#75796b",
+                "surface-container-low": "#f4f3f1",
+                "surface": "#faf9f6",
+                "background": "#faf9f6",
+                "outline-variant": "#c5c8b8",
+                "primary-fixed": "#d2eca2",
+                "surface-container": "#efeeeb",
+                "inverse-on-surface": "#f2f1ee",
+                "on-primary-container": "#d0eba1",
+                "on-surface": "#1a1c1a",
+                "primary-container": "#556b2f",
+                "surface-dim": "#dbdad7",
+                "secondary-fixed": "#ffdbc9",
+                "tertiary-fixed": "#e4e4cc",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed": "#321200",
+                "tertiary-fixed-dim": "#c8c8b0",
+                "error": "#ba1a1a",
+                "on-error": "#ffffff",
+                "on-secondary-fixed-variant": "#753401",
+                "on-primary": "#ffffff",
+                "surface-container-highest": "#e3e2e0",
+                "surface-bright": "#faf9f6",
+                "inverse-surface": "#2f312f"
+              },
+              fontFamily: {
+                "headline": ["Noto Serif", "serif"],
+                "body": ["Inter", "sans-serif"],
+                "label": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "3xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Noto Serif', serif; }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
   </head>
-  <body>
+  <body class="bg-surface text-on-surface">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
