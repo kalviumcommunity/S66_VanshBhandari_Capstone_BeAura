@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeAura | Professional Consultations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#1b1d0e",
+              "secondary-fixed-dim": "#ffb68c",
+              "on-surface-variant": "#45483c",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "primary-fixed-dim": "#b6d088",
+              "on-secondary-container": "#783603",
+              "secondary-container": "#ffa26a",
+              "surface-tint": "#50652a",
+              "tertiary": "#4c4d3b",
+              "tertiary-container": "#646552",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed": "#131f00",
+              "surface-variant": "#e3e2e0",
+              "on-tertiary-container": "#e2e3ca",
+              "inverse-primary": "#b6d088",
+              "on-background": "#1a1c1a",
+              "primary": "#3e5219",
+              "on-tertiary-fixed-variant": "#474836",
+              "on-primary-fixed-variant": "#394d14",
+              "surface-container-high": "#e9e8e5",
+              "secondary": "#934b19",
+              "outline": "#75796b",
+              "surface-container-low": "#f4f3f1",
+              "surface": "#faf9f6",
+              "background": "#faf9f6",
+              "outline-variant": "#c5c8b8",
+              "primary-fixed": "#d2eca2",
+              "surface-container": "#efeeeb",
+              "inverse-on-surface": "#f2f1ee",
+              "on-primary-container": "#d0eba1",
+              "on-surface": "#1a1c1a",
+              "primary-container": "#556b2f",
+              "surface-dim": "#dbdad7",
+              "secondary-fixed": "#ffdbc9",
+              "tertiary-fixed": "#e4e4cc",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#321200",
+              "tertiary-fixed-dim": "#c8c8b0",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-secondary-fixed-variant": "#753401",
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#e3e2e0",
+              "surface-bright": "#faf9f6",
+              "inverse-surface": "#2f312f"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-[#1a1c1a]/70 backdrop-blur-xl no-border bg-[#f4f3f1] dark:bg-[#252822] flat no shadows">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="font-noto-serif text-2xl font-bold text-[#3e5219] dark:text-[#c2ceaa] tracking-tighter">BeAura</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#45483c] dark:text-[#e3e2e0] hover:text-[#3e5219] transition-colors font-noto-serif text-lg tracking-tight" href="#">Home</a>
+<a class="text-[#45483c] dark:text-[#e3e2e0] hover:text-[#3e5219] transition-colors font-noto-serif text-lg tracking-tight" href="#">About</a>
+<a class="text-[#3e5219] dark:text-[#c2ceaa] font-semibold border-b-2 border-[#3e5219] pb-1 font-noto-serif text-lg tracking-tight" href="#">Services</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 rounded-full text-[#3e5219] dark:text-[#c2ceaa] font-medium scale-95 duration-200 ease-out hover:bg-[#f4f3f1]/50 transition-all">Login</button>
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-medium hover:opacity-90 transition-all">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-16 px-6 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-16">
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant mb-4 block">Clinical Atelier</span>
+<h1 class="font-headline text-5xl md:text-7xl text-primary leading-tight mb-6">Expert Dermatologists</h1>
+<p class="max-w-2xl text-on-surface-variant text-lg leading-relaxed">
+                Connect with our world-class medical professionals for personalized skin health consultations. Precise diagnostics meets aesthetic excellence.
+            </p>
+</header>
+<!-- Filters / Categories -->
+<div class="flex flex-wrap gap-3 mb-12">
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full text-sm font-medium">All Specialists</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-sm font-medium hover:bg-surface-container-high transition-colors">Medical Dermatology</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-sm font-medium hover:bg-surface-container-high transition-colors">Cosmetic Aesthetic</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-sm font-medium hover:bg-surface-container-high transition-colors">Laser Therapy</button>
+<button class="px-6 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-sm font-medium hover:bg-surface-container-high transition-colors">Oncology Skin Care</button>
+</div>
+<!-- Doctor Directory Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Doctor Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group border border-outline-variant/15 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-low relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Professional male doctor in clinical setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbWaLjCN0quOIA_SzcfKpHSp_PpWe5akotSUr1G6bZKeeQjj7HNlESbI3hG9_Z8tApjydlzakdReC_4Lcx2fEa0D-f9TtgVUEOTkwCwWeEEf5iAT0y0iFfuvhIOV2eaT2-VGP8UrgJ2KbmvdKH9lj2JwT7Ua6Vm0X9Axu1PaG6em8XlHIMvMMS6rX-9ui3UyW-dlv3ZbDSqhMM4Y4xXC8nlV5xD_xIo5BxxJXHoBnQYqZeBljuBG8TYp0BKXkqm3NUR0otedYogfIo"/>
+<div class="absolute top-4 left-4">
+<span class="bg-tertiary-container/90 backdrop-blur-md text-on-tertiary-container px-3 py-1 rounded-sm text-[10px] font-label tracking-widest uppercase">Senior Lead</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline text-2xl text-on-surface">Dr. Julian Vance</h3>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label text-xs font-semibold">4.9</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm mb-6">Surgical Dermatology &amp; Mohs Specialist</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Acne</span>
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Surgical</span>
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Anti-Aging</span>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-medium tracking-wide hover:bg-primary-container transition-colors flex justify-center items-center gap-2">
+                        Book Appointment
+                        <span class="material-symbols-outlined text-sm">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Doctor Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group border border-outline-variant/15 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-low relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Professional female dermatologist in white lab coat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt5iKjLOljR7jIWN3ELb9GNwomF4aHaHkZDrtZxQJNTAOSEDmmBKS_0ttaQqywIsoDNSMWw7O_TeBKGE2RDX-rnFqbjL3I4ZecnB4zpbjlss9WmI4DgOl-DDiYp2OmC2sdyXPbPgZx12Y1SuQfWpC9lluiiySp-4gxNcmIL3pbyi_5ytZBLJHBYGLWO9Lcpbdqd1lBYdJ5hiGhHSENnRdBGbXUEEt27YuGZ_U-FAbDX_xP4FV66pEfEK8fW5-kyjXJhk-KGBFIeSwt"/>
+<div class="absolute top-4 left-4">
+<span class="bg-tertiary-container/90 backdrop-blur-md text-on-tertiary-container px-3 py-1 rounded-sm text-[10px] font-label tracking-widest uppercase">Aesthetic Lead</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline text-2xl text-on-surface">Dr. Elena Rossi</h3>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label text-xs font-semibold">5.0</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm mb-6">Cosmetic Dermatology &amp; Laser Science</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Fillers</span>
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Laser</span>
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Revitalization</span>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-medium tracking-wide hover:bg-primary-container transition-colors flex justify-center items-center gap-2">
+                        Book Appointment
+                        <span class="material-symbols-outlined text-sm">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Doctor Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group border border-outline-variant/15 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-low relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Doctor in clinical room with medical equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiZ8uOl25GfFYdFkP-Cz4GkZB-l4KkkV_7hLBfTj-vpnFnyI_u4APxKs-JsfhD48SnZScajIGuyT7HhH6yXEPlrk81ZalUOQurQda4N3Jn4FqyKZjWN6mnuTkWqaF6b1LUNtzigzGS6prxfTYhZaB0I6h8NOmcGk3LykBfdheqoIQZ5hRUOlQBNKkzyqG4ReWAFfay62tW41mnUrmCOu6bv5vBViIDkng2MiH4STQ0ADZ_IZe0CVkoLWAG7e8YYviNaKNJN-4t24S1"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline text-2xl text-on-surface">Dr. Marcus Chen</h3>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label text-xs font-semibold">4.8</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm mb-6">Pediatric &amp; Clinical Dermatology</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Eczema</span>
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Pediatric</span>
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Biopsy</span>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-medium tracking-wide hover:bg-primary-container transition-colors flex justify-center items-center gap-2">
+                        Book Appointment
+                        <span class="material-symbols-outlined text-sm">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Doctor Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group border border-outline-variant/15 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-low relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Female doctor smiling in clinical setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGqtYcRJf97Nyzdjr0matmHN9Htc8yivyCZ_nGEL8X8Dp3rDv189F8yc5rtrr4W-M7OLttiwiIyVwPucSO0K8TIRhF40MK0hzFTJlqubIn03EbZQlUGpTfuHz4eTwzn6JUroB8Okb1sG9B0lmOSzBTmRq48yVX5JXf6jVbZlcACK74PTTcOo73_hqkrggO0Vz0E_Z4Bl1cFxrt0JdY_KgOKaJxpCh_oGnS4ARnRqd2dmUgYjwGfTIr81oRN6SHcJ8JP3oBml6kUFjO"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline text-2xl text-on-surface">Dr. Sarah Khalil</h3>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label text-xs font-semibold">4.9</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm mb-6">Immunology &amp; Skin Pathology</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Psoriasis</span>
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Autoimmune</span>
+<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] text-on-surface-variant uppercase font-medium">Research</span>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-medium tracking-wide hover:bg-primary-container transition-colors flex justify-center items-center gap-2">
+                        Book Appointment
+                        <span class="material-symbols-outlined text-sm">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Info Panel / Bento Element -->
+<div class="lg:col-span-2 bg-surface-container-low rounded-xl p-12 flex flex-col md:flex-row items-center gap-12 border border-outline-variant/10">
+<div class="flex-1">
+<span class="font-label text-[10px] tracking-widest uppercase text-primary mb-4 block">Tele-Health Support</span>
+<h2 class="font-headline text-4xl text-on-surface mb-6 leading-tight">Can't make it to the Atelier in person?</h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        We offer high-definition digital consultations for select skin concerns. Receive professional guidance from the comfort of your home using our encrypted clinical portal.
+                    </p>
+<a class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-4 transition-all" href="#">
+                        Learn about Virtual Care
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="w-full md:w-1/3 aspect-square bg-surface-container-lowest rounded-full p-4 border border-outline-variant/10 flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary text-6xl mb-4">video_chat</span>
+<p class="font-headline text-lg">1:1 Virtual</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Professional Footer -->
+<footer class="w-full mt-16 bg-[#f4f3f1] dark:bg-[#1a1c1a] tonal-shift bg-[#f4f3f1] dark:bg-[#252822] flat no shadows">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 gap-6 w-full max-w-7xl mx-auto">
+<div class="font-noto-serif text-xl text-[#3e5219] dark:text-[#c2ceaa]">BeAura Clinical Atelier</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-inter text-xs tracking-widest uppercase text-[#45483c] dark:text-[#e3e2e0] hover:text-[#3e5219] transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-inter text-xs tracking-widest uppercase text-[#45483c] dark:text-[#e3e2e0] hover:text-[#3e5219] transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-inter text-xs tracking-widest uppercase text-[#45483c] dark:text-[#e3e2e0] hover:text-[#3e5219] transition-colors opacity-80 hover:opacity-100" href="#">Contact Us</a>
+<a class="font-inter text-xs tracking-widest uppercase text-[#45483c] dark:text-[#e3e2e0] hover:text-[#3e5219] transition-colors opacity-80 hover:opacity-100" href="#">Shipping</a>
+</div>
+<div class="font-inter text-xs tracking-widest uppercase text-[#45483c] dark:text-[#e3e2e0] opacity-60">
+                © 2024 BeAura Clinical Atelier. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>
