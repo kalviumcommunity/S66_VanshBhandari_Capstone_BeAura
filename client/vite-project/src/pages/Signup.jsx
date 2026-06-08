@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -11,15 +12,16 @@ export default function Signup() {
     e.preventDefault();
     setError('');
     try {
-      const res = await fetch('http://localhost:5000/users', {
+      const res = await fetch('http://localhost:5000/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email })
+        body: JSON.stringify({ name, email, password })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Signup failed');
       
-      localStorage.setItem('user', JSON.stringify(data));
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
       navigate('/user-dashboard');
     } catch (err) {
       setError(err.message);
@@ -80,8 +82,9 @@ export default function Signup() {
                       <label className="block font-label text-[10px] uppercase tracking-[0.1em] text-on-surface-variant" htmlFor="password">Password</label>
                   </div>
                   <input 
+                    value={password} onChange={(e) => setPassword(e.target.value)}
                     className="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 text-on-surface placeholder:text-outline-variant focus:ring-1 focus:ring-primary/20 transition-all text-sm" 
-                    id="password" placeholder="••••••••" type="password" 
+                    id="password" placeholder="••••••••" type="password" required
                   />
               </div>
               <div className="pt-4">

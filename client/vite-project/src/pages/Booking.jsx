@@ -15,27 +15,32 @@ export default function Booking() {
   const handleBooking = async (e) => {
     e.preventDefault();
     try {
-      const userRaw = localStorage.getItem('user');
-      let userId = null;
-      if (userRaw) userId = JSON.parse(userRaw)._id;
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setStatusMsg('Please log in to book an appointment.');
+        return;
+      }
 
-      const res = await fetch('http://localhost:5000/appointments', {
+      const res = await fetch('http://localhost:5000/api/appointments/book', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({ 
           doctorId: selectedDoc, 
           date, 
-          reason,
-          user: userId || 'anonymous' // Fallback if schema requires it
+          reason
         })
       });
+      const data = await res.json();
       if (res.ok) {
         setStatusMsg('Appointment booked successfully!');
         setSelectedDoc(null);
         setDate('');
         setReason('');
       } else {
-        setStatusMsg('Failed to book appointment.');
+        setStatusMsg(data.message || 'Failed to book appointment.');
       }
     } catch (err) {
       setStatusMsg(err.message);
