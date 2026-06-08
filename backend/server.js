@@ -43,7 +43,11 @@ mongoose.connect(process.env.MONGO_URI)
   .catch((err) => console.error("Database connection error: ", err));
 
 // Start the server on port 5000
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
