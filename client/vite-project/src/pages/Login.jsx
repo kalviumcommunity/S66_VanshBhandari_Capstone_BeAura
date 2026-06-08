@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -10,15 +11,16 @@ export default function Login() {
     e.preventDefault();
     setError('');
     try {
-      const res = await fetch('http://localhost:5000/login', {
+      const res = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
+        body: JSON.stringify({ email, password })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Login failed');
       
-      localStorage.setItem('user', JSON.stringify(data));
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
       navigate('/user-dashboard');
     } catch (err) {
       setError(err.message);
@@ -89,10 +91,13 @@ export default function Login() {
                     <label className="block font-label text-[11px] uppercase tracking-widest text-on-surface-variant" htmlFor="password">Password</label>
                   </div>
                   <input 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="w-full bg-surface-container-high border-none rounded-t-xl py-4 px-5 focus:ring-0 focus:bg-surface-container-highest transition-all duration-300 placeholder:text-outline-variant/60" 
                     id="password" 
                     placeholder="••••••••" 
                     type="password" 
+                    required
                   />
                   <div className="h-[1px] w-0 group-focus-within:w-full bg-primary transition-all duration-500"></div>
                 </div>

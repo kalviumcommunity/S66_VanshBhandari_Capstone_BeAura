@@ -1,3 +1,4 @@
+// backend/models/users.js
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
@@ -10,10 +11,22 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  skinType: {
-    type: String
+  password: {
+    type: String,
+    required: true
   },
-
+  skinType: {
+    type: String,
+    default: ""
+  },
+  hairType: {
+    type: String,
+    default: ""
+  },
+  faceType: {
+    type: String,
+    default: ""
+  },
   appointment: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Appointment"

@@ -1,9 +1,10 @@
+// backend/models/appointment.js
 const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",   // 🔥 RELATION HERE
+    ref: "User", // Relation to User model
     required: true
   },
   doctorName: {
@@ -14,9 +15,9 @@ const appointmentSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
-  appointment:{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Appointment"
+  reason: {
+    type: String,
+    default: ""
   }
 });
 

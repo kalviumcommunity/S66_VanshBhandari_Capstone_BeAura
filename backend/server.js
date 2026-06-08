@@ -6,111 +6,47 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-const Appointment = require("./models/appointment");
 
-app.use(cors());
+// Enable CORS for frontend running at http://localhost:5173
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
+
+// Express built-in middleware to parse JSON bodies
 app.use(express.json());
 
-const User = require("./models/users");
+// Import all route modules
+const authRoutes = require("./routes/authRoutes");
+const appointmentRoutes = require("./routes/appointmentRoutes");
+const recommendRoutes = require("./routes/recommendRoutes");
+const userRoutes = require("./routes/userRoutes");
 
+// Mount the API routes
+// 1. Auth routes (signup, login)
+app.use("/api/auth", authRoutes);
+
+// 2. Appointment routes (booking, fetching user appointments)
+app.use("/api/appointments", appointmentRoutes);
+
+// 3. Product recommendation routes (returns matched products)
+app.use("/api/recommend", recommendRoutes);
+
+// 4. User profile routes (dashboard data retrieve/update)
+app.use("/api/user", userRoutes);
+
+// Basic health check route
 app.get("/", (req, res) => {
-  res.send("BeAura API is running");
+  res.send("BeAura API is running smoothly!");
 });
 
-app.get("/users", async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
-app.get("/users/:id", async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    res.json(user);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
+// Connect to MongoDB using Mongoose
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
+  .then(() => console.log("MongoDB Connected Successfully"))
+  .catch((err) => console.error("Database connection error: ", err));
 
+// Start the server on port 5000
 const PORT = 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-// DB WRITE operation using POST API
-app.post("/users", async (req, res) => {
-  try {
-    if (!req.body.email) {
-      return res.status(400).json({ message: "Email is required" });
-    }
-
-    const newUser = new User(req.body);
-    const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
-
-  } catch (err) {
-    if (err.code === 11000) {
-      return res.status(400).json({ message: "User with this email already exists" });
-    }
-    res.status(400).json({ message: err.message });
-  }
-});
-
-// LOGIN Endpoint
-app.post("/login", async (req, res) => {
-  try {
-    const { email } = req.body;
-    if (!email) {
-      return res.status(400).json({ message: "Email is required to login" });
-    }
-    
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(404).json({ message: "User not found. Please sign up." });
-    }
-    
-    res.status(200).json(user);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
-app.put("/users/:id", async (req, res) => {
-  try {
-    const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
-    if (!updatedUser) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    res.json(updatedUser);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
-app.get("/appointments", async (req, res) => {
-  try {
-    const appointments = await Appointment.find().populate("user");
-    res.json(appointments);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-app.post("/appointments", async (req, res) => {
-  try {
-    const appointment = new Appointment(req.body);
-    const saved = await appointment.save();
-    res.status(201).json(saved);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
+  console.log(`Server running on http://localhost:${PORT}`);
 });
