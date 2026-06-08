@@ -7,11 +7,8 @@ require("dotenv").config();
 
 const app = express();
 
-// Enable CORS for frontend running at http://localhost:5173
-app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true
-}));
+// Enable CORS for all origins (allows local localhost and deployed Netlify sites to connect)
+app.use(cors());
 
 // Express built-in middleware to parse JSON bodies
 app.use(express.json());

@@ -21,7 +21,8 @@ export default function Booking() {
         return;
       }
 
-      const res = await fetch('http://localhost:5000/api/appointments/book', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${API_URL}/api/appointments/book`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
