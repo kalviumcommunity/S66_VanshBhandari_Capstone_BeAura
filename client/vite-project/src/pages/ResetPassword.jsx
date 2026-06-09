@@ -54,7 +54,7 @@ export default function ResetPassword() {
 
   return (
     <div className="bg-surface text-on-surface min-h-screen flex flex-col">
-      {/* TopNavBar */}
+      
       <nav className="w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-xl flex justify-between items-center px-8 py-4 max-w-full">
         <Link to="/" className="text-2xl font-serif italic text-primary dark:text-[#c5d3a5]">
           BeAura
@@ -66,11 +66,11 @@ export default function ResetPassword() {
         <div className="w-10"></div>
       </nav>
 
-      {/* Main Content Canvas */}
+      
       <main className="flex-grow flex items-center justify-center px-6 py-24 md:py-32 bg-surface">
         <div className="relative w-full max-w-5xl grid md:grid-cols-2 overflow-hidden bg-surface-container-lowest rounded-xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)]">
           
-          {/* Visual Editorial Side */}
+          
           <div className="hidden md:block relative h-full min-h-[600px] bg-surface-container-low overflow-hidden">
             <div className="absolute inset-0 opacity-40 mix-blend-multiply bg-gradient-to-tr from-primary/20 to-transparent"></div>
             <img alt="Minimalist botanical bottles on marble" className="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw0RUbHJG4UzfvYA7XwhM2iHUglS8NuuAMU5JQbyTkkb483Y3L1bbEOv1GIUe4AweBWQbILcNyyADbExZvFIxMolVCShhcONZNJ0whPME99KFjJ-slVWLgma8qiSstNDYcyRIooNnuWAOORJdBEqwkHrusoDhJASDN6oElHlGelZSo99AjRwoeiAOzNMfp0Yct_ict46aD-KEOpkflFYtrGfbdD3Gma-1iB6CD9QqN23XRAe0IdcHS6Lway1qmB7B4_dv5XY42evtv" />
@@ -80,7 +80,7 @@ export default function ResetPassword() {
             </div>
           </div>
 
-          {/* Form Side */}
+          
           <div className="p-8 md:p-16 flex flex-col justify-center">
             <div className="max-w-md mx-auto w-full">
               <header className="mb-12">
