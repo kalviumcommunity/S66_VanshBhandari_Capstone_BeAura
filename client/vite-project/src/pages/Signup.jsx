@@ -6,6 +6,7 @@ export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -36,11 +37,11 @@ export default function Signup() {
         <Link to="/" className="font-headline text-2xl tracking-tight text-primary dark:text-[#faf9f6]">
             BeAura
         </Link>
-        <div className="flex items-center gap-8">
-            <button onClick={() => navigate('/chat')} className="text-on-surface-variant dark:text-[#e3e2e0] hover:text-primary transition-colors font-label text-[11px] uppercase tracking-[0.05em]">
-                Support
-            </button>
+        <div className="hidden md:flex items-center gap-10">
+          <Link to="/" className="text-on-surface-variant dark:text-[#e3e2e0] font-medium hover:text-primary transition-colors duration-300 text-sm uppercase tracking-wider">Home</Link>
+          <Link to="/about" className="text-on-surface-variant dark:text-[#e3e2e0] font-medium hover:text-primary transition-colors duration-300 text-sm uppercase tracking-wider">About</Link>
         </div>
+        <div className="w-10"></div>
       </nav>
 
       {/* Main Content: Login Canvas */}
@@ -82,11 +83,22 @@ export default function Signup() {
                   <div className="flex justify-between items-center px-1">
                       <label className="block font-label text-[10px] uppercase tracking-[0.1em] text-on-surface-variant" htmlFor="password">Password</label>
                   </div>
-                  <input 
-                    value={password} onChange={(e) => setPassword(e.target.value)}
-                    className="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 text-on-surface placeholder:text-outline-variant focus:ring-1 focus:ring-primary/20 transition-all text-sm" 
-                    id="password" placeholder="••••••••" type="password" required
-                  />
+                  <div className="relative">
+                    <input 
+                      value={password} onChange={(e) => setPassword(e.target.value)}
+                      className="w-full bg-surface-container-low border-none rounded-lg pl-4 pr-12 py-3.5 text-on-surface placeholder:text-outline-variant focus:ring-1 focus:ring-primary/20 transition-all text-sm" 
+                      id="password" placeholder="••••••••" type={showPassword ? "text" : "password"} required
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-outline-variant hover:text-primary transition-colors focus:outline-none flex items-center justify-center"
+                    >
+                      <span className="material-symbols-outlined text-lg">
+                        {showPassword ? "visibility" : "visibility_off"}
+                      </span>
+                    </button>
+                  </div>
               </div>
               <div className="pt-4">
                   <button className="w-full bg-primary text-on-primary font-body font-medium py-4 rounded-full hover:shadow-lg hover:shadow-primary/10 active:scale-[0.98] transition-all duration-200" type="submit">

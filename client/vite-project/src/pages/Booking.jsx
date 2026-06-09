@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import ProfileModal from '../components/ProfileModal';
 
 const MOCK_DOCTORS = [
   { id: 1, name: "Dr. Julian Vance", spec: "Surgical Dermatology", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCbWaLjCN0quOIA_SzcfKpHSp_PpWe5akotSUr1G6bZKeeQjj7HNlESbI3hG9_Z8tApjydlzakdReC_4Lcx2fEa0D-f9TtgVUEOTkwCwWeEEf5iAT0y0iFfuvhIOV2eaT2-VGP8UrgJ2KbmvdKH9lj2JwT7Ua6Vm0X9Axu1PaG6em8XlHIMvMMS6rX-9ui3UyW-dlv3ZbDSqhMM4Y4xXC8nlV5xD_xIo5BxxJXHoBnQYqZeBljuBG8TYp0BKXkqm3NUR0otedYogfIo" },
@@ -7,6 +8,24 @@ const MOCK_DOCTORS = [
 ];
 
 export default function Booking() {
+  const [user, setUser] = useState(null);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
+      setUser(JSON.parse(loggedInUser));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+    navigate('/');
+  };
+
   const [selectedDoc, setSelectedDoc] = useState(null);
   const [date, setDate] = useState('');
   const [reason, setReason] = useState('');
@@ -53,12 +72,33 @@ export default function Booking() {
       <nav className="fixed top-0 w-full z-50 bg-[#faf9f6]/70 backdrop-blur-xl border-b border-surface-container">
         <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
           <Link to="/" className="font-headline text-2xl font-bold text-primary tracking-tighter">BeAura</Link>
-          <div className="hidden md:flex gap-10 items-center">
-            <Link to="/user-dashboard" className="font-headline text-lg tracking-tight text-on-surface-variant hover:text-primary transition-colors">Dashboard</Link>
-            <Link to="/products" className="font-headline text-lg tracking-tight text-on-surface-variant hover:text-primary transition-colors">Shop</Link>
-            <Link to="/booking" className="font-headline text-lg tracking-tight text-primary font-semibold border-b-2 border-primary pb-1">Bookings</Link>
-            <Link to="/clinic" className="font-headline text-lg tracking-tight text-on-surface-variant hover:text-primary transition-colors">Clinic Finder</Link>
-          </div>
+          {user ? (
+            /* Logged In Navbar */
+            <>
+              <div className="hidden md:flex gap-10 items-center">
+                <Link to="/user-dashboard" className="font-headline text-lg tracking-tight text-on-surface-variant hover:text-primary transition-colors">Men's Dashboard</Link>
+                <Link to="/women-dashboard" className="font-headline text-lg tracking-tight text-on-surface-variant hover:text-primary transition-colors">Women's Hub</Link>
+                <Link to="/products" className="font-headline text-lg tracking-tight text-on-surface-variant hover:text-primary transition-colors">Shop</Link>
+                <Link to="/booking" className="font-headline text-lg tracking-tight text-primary font-semibold border-b-2 border-primary pb-1">Appointments</Link>
+                <Link to="/clinic" className="font-headline text-lg tracking-tight text-on-surface-variant hover:text-primary transition-colors">Clinic Finder</Link>
+              </div>
+              <div className="flex items-center gap-6">
+                <button onClick={handleLogout} className="text-secondary text-sm font-semibold hover:underline">Logout</button>
+                <div onClick={() => setShowProfileModal(true)} className="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 overflow-hidden cursor-pointer hover:scale-105 hover:border-primary transition-all">
+                  <span className="material-symbols-outlined text-2xl text-on-surface">person</span>
+                </div>
+              </div>
+            </>
+          ) : (
+            /* Guest Navbar */
+            <>
+              <div className="hidden md:flex items-center gap-10">
+                <Link to="/" className="font-headline text-lg tracking-tight text-on-surface-variant hover:text-primary transition-colors">Home</Link>
+                <Link to="/about" className="font-headline text-lg tracking-tight text-on-surface-variant hover:text-primary transition-colors">About</Link>
+              </div>
+              <button onClick={() => navigate('/login')} className="bg-primary text-on-primary px-6 py-2 rounded-full font-label text-xs tracking-widest uppercase hover:opacity-90 transition-all">Login</button>
+            </>
+          )}
         </div>
       </nav>
 
@@ -110,6 +150,7 @@ export default function Booking() {
           </div>
         )}
       </main>
+      <ProfileModal isOpen={showProfileModal} onClose={() => setShowProfileModal(false)} user={user} />
     </div>
   );
 }
