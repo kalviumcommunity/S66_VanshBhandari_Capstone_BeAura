@@ -30,7 +30,14 @@ const userSchema = new mongoose.Schema({
   appointment: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Appointment"
-  }]
+  }],
+  resetPasswordToken: {
+    type: String,
+    default: ""
+  },
+  resetPasswordExpires: {
+    type: Date
+  }
 });
 
 module.exports = mongoose.model("User", userSchema);

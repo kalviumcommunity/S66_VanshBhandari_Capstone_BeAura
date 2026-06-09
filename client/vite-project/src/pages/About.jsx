@@ -1,21 +1,60 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import ProfileModal from '../components/ProfileModal';
 
 export default function About() {
+  const [user, setUser] = useState(null);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
+      setUser(JSON.parse(loggedInUser));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+    navigate('/');
+  };
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed bg-[#faf9f6] text-[#1a1c1a] min-h-screen">
       {/* TopNavBar */}
       <header className="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-[#1a1c1a]/70 backdrop-blur-xl no-border bg-[#f4f3f1]">
         <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
           <Link to="/" className="font-noto-serif text-2xl font-bold text-[#3e5219] dark:text-[#c2ceaa] tracking-tighter">BeAura</Link>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link className="text-[#45483c] dark:text-[#e3e2e0] hover:text-[#3e5219] transition-colors font-noto-serif text-lg tracking-tight" to="/user-dashboard">Home</Link>
-            <Link className="text-[#3e5219] font-semibold border-b-2 border-[#3e5219] pb-1 font-noto-serif text-lg tracking-tight" to="/about">About</Link>
-            <Link className="text-[#45483c] dark:text-[#e3e2e0] hover:text-[#3e5219] transition-colors font-noto-serif text-lg tracking-tight" to="/services">Services</Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Link to="/login" className="px-6 py-2 rounded-full font-medium text-sm transition-all duration-200 ease-out bg-primary text-on-primary hover:opacity-90 active:scale-95">Login</Link>
-          </div>
+          {user ? (
+            /* Logged In Navbar */
+            <>
+              <nav className="hidden md:flex items-center space-x-8">
+                <Link to="/user-dashboard" className="font-headline text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors">Men's Dashboard</Link>
+                <Link to="/women-dashboard" className="font-headline text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors">Women's Hub</Link>
+                <Link to="/products" className="font-headline text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors">Shop</Link>
+                <Link to="/booking" className="font-headline text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors">Appointments</Link>
+                <Link to="/clinic" className="font-headline text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors">Clinic Finder</Link>
+              </nav>
+              <div className="flex items-center gap-4">
+                <button onClick={handleLogout} className="text-secondary text-sm font-semibold hover:underline">Logout</button>
+                <div onClick={() => setShowProfileModal(true)} className="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 overflow-hidden cursor-pointer hover:scale-105 hover:border-primary transition-all">
+                  <span className="material-symbols-outlined text-2xl text-on-surface">person</span>
+                </div>
+              </div>
+            </>
+          ) : (
+            /* Guest Navbar */
+            <>
+              <nav className="hidden md:flex items-center space-x-8">
+                <Link className="text-[#45483c] dark:text-[#e3e2e0] hover:text-[#3e5219] transition-colors font-noto-serif text-lg tracking-tight" to="/">Home</Link>
+                <Link className="text-[#3e5219] font-semibold border-b-2 border-[#3e5219] pb-1 font-noto-serif text-lg tracking-tight" to="/about">About</Link>
+              </nav>
+              <div className="flex items-center gap-4">
+                <Link to="/login" className="px-6 py-2 rounded-full font-medium text-sm transition-all duration-200 ease-out bg-primary text-on-primary hover:opacity-90 active:scale-95">Login</Link>
+              </div>
+            </>
+          )}
         </div>
       </header>
 
@@ -205,6 +244,7 @@ export default function About() {
           <div className="font-inter text-xs tracking-widest uppercase text-[#45483c] dark:text-[#e3e2e0] opacity-80">© 2024 BeAura Clinical Atelier. All rights reserved.</div>
         </div>
       </footer>
+      <ProfileModal isOpen={showProfileModal} onClose={() => setShowProfileModal(false)} user={user} />
     </div>
   );
 }

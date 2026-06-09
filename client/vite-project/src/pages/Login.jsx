@@ -5,6 +5,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -36,15 +37,10 @@ export default function Login() {
           BeAura
         </Link>
         <div className="hidden md:flex items-center gap-10">
-          <Link to="/products" className="text-on-surface-variant dark:text-[#e3e2e0] font-medium hover:text-primary transition-colors duration-300">Shop</Link>
-          <Link to="/about" className="text-on-surface-variant dark:text-[#e3e2e0] font-medium hover:text-primary transition-colors duration-300">Philosophy</Link>
-          <Link to="/clinic" className="text-on-surface-variant dark:text-[#e3e2e0] font-medium hover:text-primary transition-colors duration-300">Concierge</Link>
+          <Link to="/" className="text-on-surface-variant dark:text-[#e3e2e0] font-medium hover:text-primary transition-colors duration-300">Home</Link>
+          <Link to="/about" className="text-on-surface-variant dark:text-[#e3e2e0] font-medium hover:text-primary transition-colors duration-300">About</Link>
         </div>
-        <div className="flex items-center gap-6 text-primary dark:text-[#c5d3a5]">
-          <button className="hover:scale-95 duration-200 ease-in-out">
-            <span className="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
-          </button>
-        </div>
+        <div className="w-10"></div>
       </nav>
 
       {/* Main Content Canvas */}
@@ -90,16 +86,28 @@ export default function Login() {
                 <div className="group">
                   <div className="flex justify-between items-center mb-2 px-1">
                     <label className="block font-label text-[11px] uppercase tracking-widest text-on-surface-variant" htmlFor="password">Password</label>
+                    <Link to="/forgot-password" className="text-[10px] text-primary hover:underline font-label uppercase tracking-wider">Forgot Password?</Link>
                   </div>
-                  <input 
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="w-full bg-surface-container-high border-none rounded-t-xl py-4 px-5 focus:ring-0 focus:bg-surface-container-highest transition-all duration-300 placeholder:text-outline-variant/60" 
-                    id="password" 
-                    placeholder="••••••••" 
-                    type="password" 
-                    required
-                  />
+                  <div className="relative">
+                    <input 
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="w-full bg-surface-container-high border-none rounded-t-xl py-4 pl-5 pr-12 focus:ring-0 focus:bg-surface-container-highest transition-all duration-300 placeholder:text-outline-variant/60" 
+                      id="password" 
+                      placeholder="••••••••" 
+                      type={showPassword ? "text" : "password"} 
+                      required
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-outline-variant hover:text-primary transition-colors focus:outline-none flex items-center justify-center"
+                    >
+                      <span className="material-symbols-outlined text-lg">
+                        {showPassword ? "visibility" : "visibility_off"}
+                      </span>
+                    </button>
+                  </div>
                   <div className="h-[1px] w-0 group-focus-within:w-full bg-primary transition-all duration-500"></div>
                 </div>
 

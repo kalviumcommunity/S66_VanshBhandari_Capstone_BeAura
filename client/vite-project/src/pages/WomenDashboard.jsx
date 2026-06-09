@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import ProfileModal from '../components/ProfileModal';
 
 export default function WomenDashboard() {
   const [user, setUser] = useState(null);
+  const [showProfileModal, setShowProfileModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,7 +32,10 @@ export default function WomenDashboard() {
             <Link to="/clinic" className="font-headline text-lg tracking-tight text-[#45483c] hover:text-rose-800 transition-colors">Clinic Finder</Link>
           </div>
           <div className="flex items-center gap-4">
-            <button onClick={() => { localStorage.removeItem('user'); navigate('/'); }} className="text-secondary text-sm font-semibold hover:underline">Logout</button>
+            <button onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('user'); navigate('/'); }} className="text-secondary text-sm font-semibold hover:underline">Logout</button>
+            <div onClick={() => setShowProfileModal(true)} className="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 overflow-hidden cursor-pointer hover:scale-105 hover:border-primary transition-all">
+              <span className="material-symbols-outlined text-2xl text-rose-800">person</span>
+            </div>
           </div>
         </div>
       </nav>
@@ -97,6 +102,8 @@ export default function WomenDashboard() {
             </button>
         </div>
       </main>
+
+      <ProfileModal isOpen={showProfileModal} onClose={() => setShowProfileModal(false)} user={user} />
     </div>
   );
 }

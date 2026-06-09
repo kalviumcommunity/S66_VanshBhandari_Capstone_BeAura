@@ -15,9 +15,6 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-10">
             <Link to="/" className="text-primary dark:text-[#c2ceaa] font-semibold border-b-2 border-primary pb-1 font-headline text-lg tracking-tight">Home</Link>
             <Link to="/about" className="text-on-surface-variant dark:text-[#e3e2e0] hover:text-primary transition-colors font-headline text-lg tracking-tight">About</Link>
-            <Link to="/products" className="text-on-surface-variant dark:text-[#e3e2e0] hover:text-primary transition-colors font-headline text-lg tracking-tight">Products</Link>
-            <Link to="/clinic" className="text-on-surface-variant dark:text-[#e3e2e0] hover:text-primary transition-colors font-headline text-lg tracking-tight">Clinics</Link>
-            <Link to="/chat" className="text-on-surface-variant dark:text-[#e3e2e0] hover:text-primary transition-colors font-headline text-lg tracking-tight">Chat</Link>
           </div>
           <div className="flex items-center gap-4">
             <button onClick={() => navigate('/login')} className="px-6 py-2 text-primary font-medium hover:bg-surface-container-low/50 transition-all rounded-full">Login</button>

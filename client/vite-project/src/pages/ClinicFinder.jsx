@@ -1,21 +1,58 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import ProfileModal from '../components/ProfileModal';
 
 export default function ClinicFinder() {
+  const [user, setUser] = useState(null);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
+      setUser(JSON.parse(loggedInUser));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+    navigate('/');
+  };
+
   return (
     <div className="bg-surface text-on-surface antialiased overflow-hidden h-screen bg-[#faf9f6]">
       {/* TopNavBar */}
       <nav className="fixed top-0 w-full z-50 bg-[#faf9f6]/70 backdrop-blur-xl no-border bg-[#f4f3f1]">
         <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
           <Link to="/" className="font-noto-serif text-2xl font-bold text-[#3e5219] tracking-tighter">BeAura</Link>
-          <div className="hidden md:flex items-center gap-8">
-            <Link className="font-noto-serif text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors" to="/user-dashboard">Home</Link>
-            <Link className="font-noto-serif text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors" to="/about">About</Link>
-            <Link className="font-noto-serif text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors" to="/services">Services</Link>
-            <Link className="font-noto-serif text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors" to="/booking">Booking</Link>
-            <Link className="font-noto-serif text-lg tracking-tight text-[#3e5219] font-semibold border-b-2 border-[#3e5219] pb-1" to="/clinic">Clinic</Link>
-          </div>
-          <Link to="/login" className="bg-primary text-on-primary px-6 py-2 rounded-full font-medium scale-95 duration-200 ease-out hover:bg-primary-container transition-all">Login</Link>
+          {user ? (
+            /* Logged In Navbar */
+            <>
+              <div className="hidden md:flex items-center space-x-8">
+                <Link to="/user-dashboard" className="font-headline text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors">Men's Dashboard</Link>
+                <Link to="/women-dashboard" className="font-headline text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors">Women's Hub</Link>
+                <Link to="/products" className="font-headline text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors">Shop</Link>
+                <Link to="/booking" className="font-headline text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors">Appointments</Link>
+                <Link to="/clinic" className="font-headline text-lg tracking-tight text-[#3e5219] font-semibold border-b-2 border-[#3e5219] pb-1">Clinic Finder</Link>
+              </div>
+              <div className="flex items-center gap-4">
+                <button onClick={handleLogout} className="text-secondary text-sm font-semibold hover:underline">Logout</button>
+                <div onClick={() => setShowProfileModal(true)} className="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 overflow-hidden cursor-pointer hover:scale-105 hover:border-primary transition-all">
+                  <span className="material-symbols-outlined text-2xl text-on-surface">person</span>
+                </div>
+              </div>
+            </>
+          ) : (
+            /* Guest Navbar */
+            <>
+              <div className="hidden md:flex items-center gap-8">
+                <Link className="font-noto-serif text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors" to="/">Home</Link>
+                <Link className="font-noto-serif text-lg tracking-tight text-[#45483c] hover:text-[#3e5219] transition-colors" to="/about">About</Link>
+              </div>
+            </>
+          )}
         </div>
       </nav>
 
@@ -204,6 +241,7 @@ export default function ClinicFinder() {
           </Link>
         </div>
       </footer>
+      <ProfileModal isOpen={showProfileModal} onClose={() => setShowProfileModal(false)} user={user} />
     </div>
   );
 }

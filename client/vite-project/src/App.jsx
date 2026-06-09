@@ -12,6 +12,8 @@ import Services from './pages/Services';
 import About from './pages/About';
 import Booking from './pages/Booking';
 import ClinicFinder from './pages/ClinicFinder';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import './App.css';
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/clinic" element={<ClinicFinder />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );

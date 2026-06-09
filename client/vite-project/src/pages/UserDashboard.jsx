@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function UserDashboard() {
   const [user, setUser] = useState(null);
+  const [showProfileModal, setShowProfileModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function UserDashboard() {
           <div className="flex items-center gap-4">
             <button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all">notifications</button>
             <button onClick={() => { localStorage.removeItem('user'); navigate('/'); }} className="text-secondary text-sm font-semibold hover:underline">Logout</button>
-            <div className="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 overflow-hidden">
+            <div onClick={() => setShowProfileModal(true)} className="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 overflow-hidden cursor-pointer hover:scale-105 hover:border-primary transition-all">
               <span className="material-symbols-outlined text-2xl">person</span>
             </div>
           </div>
@@ -119,6 +120,55 @@ export default function UserDashboard() {
 
         {/* Footer section... kept brief here */}
       </main>
+
+      {/* Profile Modal */}
+      {showProfileModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-surface-container-lowest border border-outline-variant/20 rounded-[2rem] p-8 max-w-md w-full mx-4 shadow-2xl relative text-on-surface">
+            <button 
+              onClick={() => setShowProfileModal(false)} 
+              className="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors focus:outline-none"
+            >
+              <span className="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <div className="flex flex-col items-center mb-6">
+              <div className="h-20 w-20 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+                <span className="material-symbols-outlined text-5xl">person</span>
+              </div>
+              <h2 className="font-headline text-3xl font-bold text-primary">{user.name}</h2>
+              <p className="text-sm text-on-surface-variant mt-1">{user.email}</p>
+            </div>
+            <div className="space-y-4 pt-4 border-t border-outline-variant/10">
+              <div className="flex justify-between items-center bg-surface-container-low/50 px-4 py-3 rounded-xl">
+                <span className="text-xs uppercase tracking-wider text-on-surface-variant font-medium">Skin Type</span>
+                <span className="text-sm font-semibold text-primary capitalize">{user.skinType || "Not Analyzed"}</span>
+              </div>
+              <div className="flex justify-between items-center bg-surface-container-low/50 px-4 py-3 rounded-xl">
+                <span className="text-xs uppercase tracking-wider text-on-surface-variant font-medium">Hair Type</span>
+                <span className="text-sm font-semibold text-primary capitalize">{user.hairType || "Not Analyzed"}</span>
+              </div>
+              <div className="flex justify-between items-center bg-surface-container-low/50 px-4 py-3 rounded-xl">
+                <span className="text-xs uppercase tracking-wider text-on-surface-variant font-medium">Face Shape</span>
+                <span className="text-sm font-semibold text-primary capitalize">{user.faceType || "Not Analyzed"}</span>
+              </div>
+            </div>
+            <div className="mt-8 flex gap-4">
+              <button 
+                onClick={() => { setShowProfileModal(false); navigate('/booking'); }} 
+                className="flex-1 py-3 bg-primary text-on-primary rounded-full text-xs uppercase tracking-widest font-semibold hover:shadow-lg transition-all text-center"
+              >
+                Book Consult
+              </button>
+              <button 
+                onClick={() => { setShowProfileModal(false); navigate('/products'); }} 
+                className="flex-1 py-3 border border-outline-variant text-primary rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-surface-container-low transition-all text-center"
+              >
+                Shop Routine
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
